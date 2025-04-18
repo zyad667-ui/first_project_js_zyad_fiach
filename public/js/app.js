@@ -85,7 +85,7 @@ function sign_up() {
     }
     console.log(email);
     // **********
-    let age = prompt("Enter your age.").trim();
+    let age = prompt(("Enter your age.").trim());
 
     function verifAge() {
         if (age.length === 0 || age.length > 2) {
@@ -98,23 +98,38 @@ function sign_up() {
     age = verifAge();
     console.log("ton age est : " + age);
     //*********
-    
+    let spécial_character = /[@#\-+*/]/;
+    let password_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#\-+*/])[A-Za-z\d@#\-+*/]{7,}$/
 
+    function hasmiddlespace(str) {
+        return str !== str.trim() || str.includes(" ")
+    }
+    let password = " "
+    let confirm = false
 
+    while (!confirm) {
+        password = prompt("enter your password: ").trim()
 
+        if (hasmiddlespace(password)) {
+            alert("password should not contain spaces .");
+        }
+        if (password_pattern.test(password)) {
+            alert("password is invalid It must contain:\n- At least one lowercase letter\n- At least one uppercase letter\n- At least one digit\n- At least one special character (@, #, -, +, *, /)\n- At least 7 characters.")
+        }
 
+        let confirmpassword = prompt("confirm your password ").trim();
 
+        if (password !== confirmpassword) {
+            alert("password do not match . try again  ")
+        }
 
+        confirm = true
 
-
-
-
-
-
+    }
+    alert("your name is valid  and confirmed ")
+    console.log("password " + password);
 
 }
-
-
 
 
 
