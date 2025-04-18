@@ -1,30 +1,21 @@
+let bank_users = []
+class users {
+    constructor(name, email, paswword, money, ledger) {
+        this.name = name
+        this.email = email
+        this.paswword = paswword
+        this.money = money
+        this.ledger = ledger
+    }
+}
 
 
 
 
 
-// let choose_users = prompt(" do you want to signing up, logging in, or changing the password.")
-// if (choose == "exit") {
-//     alert("you exit successfully ")
-//     prompt("do you want to  signing up, logging in, or changing the password.")
-//     console.log(choose_users);
-// }
-// else if (choose_users == "sign up") {
-//     prompt("You have successfully signed up. ")
-//     alert("you sign up successfully ")
-//     console.log(choose_users);
-//     SignUp()
-// }
-// else if (choose_users == " log in") {
-//     prompt("You have successfully logs in ")
-//     console.log(choose_users);
-//     logsIn()
-// }
-// else if (choose_users == "changing the password") {
-//     prompt("The system is currently changing the password.")
-//     console.log(choose_users);
-//     changePassword()
-// }
+
+
+
 
 
 let choose = prompt("do you want to  signing up, logging in, or changing the password.")
@@ -66,6 +57,62 @@ function sign_up() {
         console.log(("Full name: " + capitalized_letter));
         alert('Your name is valid.')
     }
+
+    // **********
+    let
+        email = prompt("insert your mail : ")
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+    let reduce_space_email = email
+        .split(' ')
+        .map(e => e.toLowerCase())
+        .join(' ')
+    if (emailRegex.test(email)) {
+        console.log("Email" + reduce_space_email.trim());
+        alert("your email are valid")
+    }
+    else if (email.length < 10) {
+        alert('Your email must contain a minimum of 10 characters.');
+        let email = prompt("Enter your email: ");
+        console.log("Email: " + reduce_space_email.trim());
+    }
+    else if (!email.includes('@')) {
+        alert('Your email must contain a domain name.');
+        let email = prompt("Enter your email: ");
+        console.log("Email: " + reduce_space_email.trim());
+    }
+    else {
+        alert('Your email is invalid.');
+    }
+    console.log(email);
+    // **********
+    let age = prompt("Enter your age.").trim();
+
+    function verifAge() {
+        if (age.length === 0 || age.length > 2) {
+            age = prompt("Enter a valid age!").trim();
+            return verifAge();
+        } else {
+            return parseInt(age);
+        }
+    }
+    age = verifAge();
+    console.log("ton age est : " + age);
+    //*********
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
