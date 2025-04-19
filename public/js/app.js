@@ -1,32 +1,39 @@
-let bank_users = []
+let bank_users = [{
+    name: "Zyad Fiach",
+    email: "zyad@gmail.com",
+    age: 22,
+    password: 'zy@dSecure123!',
+    balance: 2500,
+    history: [],
+    loan: 500
+}]
 class users {
     constructor(name, email, paswword, money, ledger) {
         this.name = name
         this.email = email
         this.paswword = paswword
-        this.money = 1000
-        this.ledger = 0
+        this.money = money
+        this.ledger = ledger
     }
 }
-let choose = prompt("do you want to  signing up, logging in, or changing the password.")
-if (choose == "exit") {
-    alert("you exit successfully ")
-    console.log("your out");
-    let choose = prompt("do you want to  signing up, logging in, or changing the password.")
-    sign_up()
-    log_in()
-    change_paswword()
-}
-else if (choose == "signing up") {
-    sign_up()
-}
-else if (choose == "log in") {
-    let info = prompt("insert your infom")
-    log_in()
-}
-else if (choose == "changing the password.") {
-    let changing = prompt("change paswword")
-    change_paswword()
+function mainMenu() {
+    while (true) {
+        let choose = prompt("Do you want to: 'sign up', 'log in', or 'change password'? Type 'exit' to quit.").trim().toLowerCase();
+
+        if (choose === "exit") {
+            alert("You exited successfully.");
+            console.log("You're out.");
+            break;
+        } else if (choose === "sign up") {
+            sign_up();
+        } else if (choose === "log in") {
+            log_in();
+        } else if (choose === "change password") {
+            change_password();
+        } else {
+            alert("Invalid option. Please try again.");
+        }
+    }
 }
 
 function sign_up() {
@@ -128,3 +135,52 @@ function sign_up() {
     console.log("user added ", newusers);
 }
 
+function log_in() {
+    let email = prompt("enter your email your email : ").trim().toLowerCase()
+
+    let user = bank_users.find(u => u.email === email)
+    if (!user) {
+        alert("email not found")
+        return
+    }
+    let password = prompt("enter your password").trim()
+    if (password !== user.password) {
+        alert("coorect password .");
+    }
+    alert("login succesfule Mr " + user.name + "welcome to your account ")
+    console.log("logged in " + user);
+    Servicebancair()
+
+    //*************** */
+    function change_paswword() {
+        let email = prompt("enter your email :").trim.toLowerCase();
+        let user = bank_users(y => y.email === email)
+        if (!user) {
+            alert("email not found")
+            return
+        }
+        let oldpassword = prompt("enter your current  password : ")
+        if (oldpassword !== user.password) {
+            alert("Incorrect current password.")
+        }
+        let newpassword = prompt("enter your new password ").trim();
+        let password_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#\-+*/])[A-Za-z\d@#\-+*/]{7,}$/
+
+        if (!password_pattern.test(newpassword)) {
+            alert("password  changed succesful")
+            console.log("updated user: ", user);
+
+        }
+    }
+
+}
+mainMenu();
+
+
+function Servicebancair(user) {
+    while (true) {
+        const choice = prompt(`Welcome ${user.name}!\n\nChoose a service:\n- Withdraw\n- Deposit\n- Loan\n- Invest\n- History\n- Logout\n(Type 'exit' to leave)`)
+    }
+
+    
+}
