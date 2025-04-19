@@ -180,7 +180,34 @@ mainMenu();
 function Servicebancair(user) {
     while (true) {
         const choice = prompt(`Welcome ${user.name}!\n\nChoose a service:\n- Withdraw\n- Deposit\n- Loan\n- Invest\n- History\n- Logout\n(Type 'exit' to leave)`)
-    }
 
-    
+        if (!choice) {
+            alert("no input detected please try again")
+        }
+
+        switch (choice.trim().toLowerCase) {
+            case "exit":
+                alert("you been logged out see you soon")
+                return;
+
+            case "withdraw":
+                withdraw(user)
+                break
+            case "deposit":
+                deposit(user)
+                break
+            case "loan":
+                loan(user)
+                break
+            case "invest":
+                invest(user)
+                break
+            case "history":
+                history(user)
+                break
+            default: {
+                alert("banqua m3adnhach had services , write a valid service ty")
+            }
+        }
+    }
 }
