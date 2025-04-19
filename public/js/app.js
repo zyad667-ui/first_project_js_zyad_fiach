@@ -4,26 +4,18 @@ class users {
         this.name = name
         this.email = email
         this.paswword = paswword
-        this.money = money
-        this.ledger = ledger
+        this.money = 1000
+        this.ledger = 0
     }
 }
-
-
-
-
-
-
-
-
-
-
 let choose = prompt("do you want to  signing up, logging in, or changing the password.")
 if (choose == "exit") {
     alert("you exit successfully ")
     console.log("your out");
     let choose = prompt("do you want to  signing up, logging in, or changing the password.")
-
+    sign_up()
+    log_in()
+    change_paswword()
 }
 else if (choose == "signing up") {
     sign_up()
@@ -129,10 +121,10 @@ function sign_up() {
     alert("your name is valid  and confirmed ")
     console.log("password " + password);
 
+
+    let newusers = new users(capitalized_letter, email, password)
+    bank_users.push(newusers)
+    alert("Registration successful!")
+    console.log("user added ", newusers);
 }
-
-
-
-
-
 
