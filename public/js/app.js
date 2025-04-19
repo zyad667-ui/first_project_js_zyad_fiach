@@ -270,5 +270,25 @@ function loan(user) {
         return alert("please enter a valid  amount")
     }
 
-    
+
+}
+
+function invest(user) {
+    if (amountstr === "exit") {
+        return alert("operation cancelled")
+    }
+
+    if (amount <= 0 || isNaN(amount)) {
+        return alert("please enter a valid  amount")
+    }
+}
+
+
+function history(user) {
+    if (!user.history || user.history.length === 0) {
+        alert("No recent activity.");
+    } else {
+        let activities = user.history.join("\n");
+        alert(`Recent activity:\n\n${activities}`);
+    }
 }
