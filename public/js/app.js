@@ -211,3 +211,64 @@ function Servicebancair(user) {
         }
     }
 }
+function withdraw(user) {
+    let amountstr = prompt("how m do you want to with draw ")
+
+    if (amountstr === "exit") {
+        return alert("operation cancelled")
+    }
+
+    let amount = parseFloat(amountstr.trim())
+
+    if (user.balance < amount) {
+        alert("insufficient fuds")
+    }
+    if (amount <= 0 || isNaN(amount)) {
+        return alert("please enter a valid  amount")
+    }
+
+
+    user.balance -= amount
+    if (!user.history) user.history = [];
+    user.history.push(`Withdrawn ${amount} - New Balance: ${user.balance}`);
+
+    alert(`Withdrawal successful. Your new balance is ${user.balance}`);
+    console.log(`${user.name}withdrew ${amount} his new balance after withdrew is ${user.balance}`);
+
+}
+
+function deposit(user) {
+    if (amountstr === "exit") {
+        return alert("operation cancelled")
+    }
+
+    if (amount <= 0 || isNaN(amount)) {
+        return alert("please enter a valid  amount")
+    }
+    if (amount <= 1000) {
+        user.balance += amount
+        alert(`${user.name} deposited ${amount.toFixed(2)}dollar`)
+        console.log(`${user.name} deposited ${amount.toFixed(2)}dollar`);
+
+        user.history.push(`Deposit of ${amount.toFixed(2)}$`)
+    }
+    else {
+        alert("you cant push more than 1000 $")
+    }
+}
+
+
+
+
+
+function loan(user) {
+    if (amountstr === "exit") {
+        return alert("operation cancelled")
+    }
+
+    if (amount <= 0 || isNaN(amount)) {
+        return alert("please enter a valid  amount")
+    }
+
+    
+}
